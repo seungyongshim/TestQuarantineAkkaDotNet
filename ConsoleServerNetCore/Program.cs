@@ -1,12 +1,21 @@
-﻿using System;
+﻿using Akka;
+using Akka.Actor;
+using Akka.Configuration;
+using System;
+using System.IO;
 
 namespace ConsoleServerNetCore
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var conf = ConfigurationFactory.ParseString(File.ReadAllText("Akka.hocon"));
+            var sys = ActorSystem.Create("RemoteSys", conf);
+
+            IActorRef echoActor = sys.ActorOf(Props.Create(() => new EchoActor()),"EchoActor");
+
+            Console.ReadLine();
         }
     }
 }

@@ -1,0 +1,21 @@
+﻿akka {  
+    loglevel = "DEBUG"
+    actor {
+        provider = remote
+    }
+    remote {
+         dot-netty.tcp {
+            port = 9000 #bound to a specific port
+            hostname = localhost
+        }
+    }
+    debug {
+      receive = on
+      autoreceive = on
+      lifecycle = on
+      fsm = on
+      event-stream = on
+      unhandled = on
+      router-misconfiguration = on
+    }
+}
