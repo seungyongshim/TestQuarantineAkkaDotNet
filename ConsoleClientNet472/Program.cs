@@ -18,9 +18,6 @@ namespace ConsoleClientNet472
 
             IActorRef sendActor = sys.ActorOf(Props.Create(() => new SendActor()), "SendActor");
 
-            sendActor.Tell(StartRemoting.Instance);
-
-
             Console.ReadLine();
         }
     }

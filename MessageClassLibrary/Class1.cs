@@ -1,15 +1,21 @@
 ﻿using System;
+using System.Text;
 
 namespace MessageClassLibrary
 {
     public class Msg
     {
-        public Msg(string content)
+        public Msg(int v)
         {
-            Content = new string [9,9];
-            Content[0, 0] = content;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < v; i++)
+            {
+                sb.Append(i.ToString());
+            }
+            Content = sb.ToString();
+
         }
 
-        public string [,] Content { get; }
+        public string Content { get; }
     }
 }

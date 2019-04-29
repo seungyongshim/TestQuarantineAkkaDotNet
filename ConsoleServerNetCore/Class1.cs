@@ -12,7 +12,8 @@ namespace ConsoleServerNetCore
         public EchoActor()
         {
             Receive<Msg>(msg => {
-                // echo message back to sender
+                // echo message back to sender\
+                Console.WriteLine("Received {0} from {1}", msg.Content.Length, Sender);
                 Sender.Tell(msg);
             });
         }
